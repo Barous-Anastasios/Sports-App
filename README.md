@@ -8,6 +8,9 @@ The user has to insert a team's name and all team's players are shown. User has 
 ## Technical
 Bower, angular-seed were partly used.
 
+## How to use
+Clone or download and run application on server localhost:8080 with the command 'npm start' typed in the root of the application. Enable CORS on browser to get the data.
+
 
 
 
