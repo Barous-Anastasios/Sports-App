@@ -10,7 +10,7 @@ angular.module('SportsApp.team', ['ngRoute'])
 }])
 
 .controller('TeamController', ['$scope', '$http', function($scope, $http) {
-    // The team the user types. 
+    // The team inserted by the user. 
     $scope.team = null;
 
     // Showing the first team that matches the user's input.
@@ -22,7 +22,7 @@ angular.module('SportsApp.team', ['ngRoute'])
     // An array with all the players the user has liked.
     $scope.favorites = [];
 
-    // Checking if we have favorites.
+    // Checking if there are any favorites.
     $scope.fav = false;
 
     // The message to display on like or delete.
@@ -36,10 +36,12 @@ angular.module('SportsApp.team', ['ngRoute'])
       $scope.current_player = player;
     }
 
-    // Pushes the liked player into the favorites array.
+    // Inserts the 'liked' player into the array of favorites.
     $scope.add_favorite = function(player){
       $scope.favorites.push(player);
       $scope.fav = true;
+
+      // Creates a message to display for only 3 seconds.
       $('.msg').css('display', 'inline-block');
       $scope.msg = 'Player added to favorites';
       setTimeout(function(){
@@ -48,19 +50,23 @@ angular.module('SportsApp.team', ['ngRoute'])
       }, 3000);
     }
 
-    // Removes the player from the favorites array.
+    // Removes the player from the array of favorites.
     $scope.remove = function(player){
       $scope.favorites = $scope.favorites.filter(function(val,index){
          if(val.id != player.id){
            return player;
          }
       });
+
+      // Creates a message to display for only 3 seconds.
       $('.msg').css('display', 'inline-block');
       $scope.msg = 'Player removed from favorites';
       setTimeout(function(){
         $scope.msg = null;
         $('.msg').css('display', 'none');
      }, 3000);
+
+      // If favorites array is empty dont show Favorites title.
       if($scope.favorites.length == 0){
          $scope.fav = false;
       }
@@ -74,7 +80,7 @@ angular.module('SportsApp.team', ['ngRoute'])
       $scope.playerslist = helpArray;
     }
 
-    // Sorts the players by their signing money.
+    // Sorts the players by their wage money.
     $scope.sortByWage = function(){
       var helpArray = $scope.playerslist;
       $scope.playerslist = [];
@@ -84,17 +90,21 @@ angular.module('SportsApp.team', ['ngRoute'])
 
     // Whenever user changes their input another api call takes place fetching the data.
     $scope.change = function(){
+
+      // When input changes the player that was selected has to be gone.
       $scope.current_player = null;
       $http({
         method:'GET',
         url: urlbase + $scope.team
       }).then(function (response){
           if(response.data.player){
-            // For each call we clear up the list.
+
+            // For each call we clear up the players list.
             $scope.playerslist = [];
 
             // Looping over the players array we get from the api call.
             response.data.player.map(function(val){
+
                 // Creating an empty object for each player.
                 var player = {};
 
@@ -129,22 +139,23 @@ angular.module('SportsApp.team', ['ngRoute'])
                 var ageArray = val.dateBorn.split('');
                 player['age'] = (new Date()).getFullYear() - parseInt(ageArray[0] + ageArray[1] + ageArray[2] + ageArray[3])
                 
+                // Pushing the player into the players array.
                 $scope.playerslist.push(player);
             })
+
+            // Saves the name of the team in a scope variable. 
             $scope.showteam = response.data.player[0].strTeam;
 
-            var helpArray = $scope.playerslist;
-            $scope.playerslist = [];
-            helpArray.sort(wageCompare);
-            $scope.playerslist = helpArray;
+            // Initial sort in descending wage order.
+            $scope.sortByWage();
           }
       }, function (response){
-         $scope.players = [];
-         console.log('Something caused an error');
+        $('.msg').css('display', 'inline-block');
+        $scope.msg = 'Something went wrong';
       });
     }
 
-    // Helpful signing sort function.
+    // Helpful sort by signing function.
     function signingCompare(a, b) {
       var stripped_a = a['signing'].replace(/\D/g,'');
       var stripped_b = b['signing'].replace(/\D/g,'');
@@ -156,7 +167,7 @@ angular.module('SportsApp.team', ['ngRoute'])
       return 0;
     }
 
-    // Helpful wage sort function.
+    // Helpful sort by wage function.
     function wageCompare(a, b) {
       var stripped_a = a['wage'].replace(/\D/g,'');
       var stripped_b = b['wage'].replace(/\D/g,'');
