@@ -1,8 +1,7 @@
 'use strict';
 
 angular.module('SportsApp.team', ['ngRoute'])
-
-.config(['$routeProvider', function($routeProvider) {
+.config(['$routeProvider', '$httpProvider', function($routeProvider, $httpProvider) {
   $routeProvider.when('/team', {
     templateUrl: 'team/team.html',
     controller: 'TeamController'
@@ -95,7 +94,8 @@ angular.module('SportsApp.team', ['ngRoute'])
       $scope.current_player = null;
       $http({
         method:'GET',
-        url: urlbase + $scope.team
+        headers: {'Content-Type': 'application/json; charset=utf-8; Access-Control-Allow-Origin: *'},
+        url: urlbase + $scope.team,
       }).then(function (response){
           if(response.data.player){
 
