@@ -37,7 +37,18 @@ angular.module('SportsApp.team', ['ngRoute'])
 
     // Inserts the 'liked' player into the array of favorites.
     $scope.add_favorite = function(player){
-      $scope.favorites.push(player);
+      // Only add if there hasnt been added.
+      var exists = false;
+      $scope.favorites.map(function(val){
+        if(val.id == player.id){
+           exists = true;
+        }
+      });
+
+      if(!exists){
+         $scope.favorites.push(player);
+      }
+      
       $scope.fav = true;
 
       // Creates a message to display for only 3 seconds.
