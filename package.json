@@ -11,6 +11,6 @@
     "start": "http-server -a localhost -p 8000 -c-1 ./app"
   },
   "engines": {
-    "node": "9.4.0"
-  },
+    "node": "^9.4.0"
+  }
 }
