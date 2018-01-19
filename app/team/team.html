@@ -1,0 +1,68 @@
+<div class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="text-center">Football Stats</h2>
+            </div>
+        </div>
+        <div ng-controller="TeamController" class="team-selection">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="text-center">
+                        <label for="team">Enter a team here:</label>
+                        <input type="text" ng-model="team" ng-change="change()" placeholder="example: Liverpool">
+                    </div>
+                </div>
+            </div>
+            <div class="players">
+                <h2 ng-if="team">{{showteam}}</h2><span ng-if="msg" class="msg alert alert-success">{{msg}}</span>
+                <div class="row" ng-if="team">
+                    <div class="col-md-5">
+                        <table>
+                            <tr>
+                                <th>Name</th>
+                                <th>Signing <i class="fa fa-arrow-down" ng-click="sortBySigning()"></i></th>
+                                <th>Wage <i class="fa fa-arrow-down" ng-click="sortByWage()"></i></th>
+                            </tr>
+                            <tr ng-repeat="player in playerslist">
+                                <td class="name" ng-click="player_info(player)">{{player.name}}</td>
+                                <td>{{player.signing}}</td>
+                                <td>{{player.wage}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div ng-if="current_player" class="col-md-6">
+                        <img class="img-responsive" src="{{current_player.image}}" alt="">
+                        <h4>Name</h4>
+                        <p>{{current_player.name}}</p>
+                        <h4>Age</h4>
+                        <p>{{current_player.age}}</p>
+                        <h4>Info</h4>
+                        <p>{{current_player.description}}</p>
+                    </div>
+                    <div ng-if="current_player" class="col-md-1">
+                        <i class="fa fa-star fa-2x" ng-click="add_favorite(current_player)"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div ng-if="fav" class="favorites">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h2>Favorites</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <ul>
+                            <li ng-repeat="player in favorites">{{player.name}} <i ng-click="remove(player)" class="fa fa-times fa" aria-hidden="true"></i></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,97 @@
+body{
+  font-family: 'Poppins', sans-serif;
+  background-color: rgb(196, 212, 235);
+}
+
+h2{
+  margin:20px 0 20px 0;
+}
+
+.content .container{
+  margin-top:5%;
+  margin-bottom:5%;
+  border: 2px solid black;
+  background-color: #fff;
+}
+
+input{
+  border-left:none;
+  border-right:none;
+  border-bottom: 2px solid black;
+  border-top: 2px solid black;
+  text-align: center;
+}
+
+input:focus{
+  border-bottom: 2px solid green;
+  border-top: 2px solid green;
+  outline: none;
+}
+
+th, td{
+  border:1px solid black;
+  padding:10px;
+  text-align: center;
+}
+
+.name:hover{
+  color:blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+p{
+  margin-top:20px;
+}
+
+h4{
+  margin-top:10px;
+}
+
+label{
+  font-size: 20px;
+  margin-right: 20px;
+}
+
+.team-selection{
+  padding:20px;
+}
+
+.fa-star{
+  color:#e6e600;
+}
+
+.fa-star:hover{
+  color:blue;
+  cursor: pointer;
+}
+
+.msg{
+  display: inline-block;
+  float: right;
+  margin:1% 8.5% 0 0;
+}
+
+.players h2{
+  display: inline-block;
+}
+
+img{
+  width: 100%;
+}
+
+.fa-times{
+  color:red;
+}
+
+.fa-times:hover{
+  cursor: pointer;
+}
+
+li{
+  font-size:20px;
+}
+
+i:hover{
+  cursor: pointer;
+}
