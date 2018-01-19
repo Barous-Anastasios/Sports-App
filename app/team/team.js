@@ -97,6 +97,7 @@ angular.module('SportsApp.team', ['ngRoute'])
         headers: {'Content-Type': 'application/json; charset=utf-8; Access-Control-Allow-Origin: *'},
         url: urlbase + $scope.team,
       }).then(function (response){
+          // If a team is matched with user input value.
           if(response.data.player){
 
             // For each call we clear up the players list.
@@ -108,6 +109,7 @@ angular.module('SportsApp.team', ['ngRoute'])
                 // Creating an empty object for each player.
                 var player = {};
 
+                // Saving data.
                 player['name'] = val.strPlayer;
                 player['id'] = val.idPlayer;
 
