@@ -1,6 +1,6 @@
 'use strict';
 
-var team = angular.module('SportsApp.team', ['ngRoute']);
+var team = angular.module('SportsApp.team', []);
 
 // team.config(['$routeProvider', '$httpProvider', function($routeProvider, $httpProvider) {
 //   $routeProvider.when('/team', {
