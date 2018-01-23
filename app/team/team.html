@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div class="players">
-                <h2 ng-if="team">{{showteam}}</h2><span ng-if="msg" class="msg alert alert-success">{{msg}}</span>
+                <h2 ng-if="team">{{showteam | uppercase}}</h2><span ng-if="msg" class="msg alert alert-success">{{msg}}</span>
                 <div class="row" ng-if="team">
                     <div class="col-md-5">
                         <table>

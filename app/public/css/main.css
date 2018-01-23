@@ -95,3 +95,7 @@ li{
 i:hover{
   cursor: pointer;
 }
+
+.favorites{
+  margin-left: 15px;
+}
