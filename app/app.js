@@ -6,5 +6,10 @@ angular.module('SportsApp', [
 ])
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider
+  	.when('/',
+	  	{
+	  		controller:'TeamController',
+	  		templateUrl: 'team/team.html'
+	  	})
     .otherwise({redirectTo: 'team'});
 }]);
