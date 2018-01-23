@@ -17,7 +17,7 @@
             <div class="players">
                 <h2 ng-if="team">{{showteam | uppercase}}</h2><span ng-if="msg" class="msg alert alert-success">{{msg}}</span>
                 <div class="row" ng-if="team">
-                    <div class="col-md-5">
+                    <div class="col-md-6 col-sm-9">
                         <table>
                             <tr>
                                 <th>Name</th>
@@ -31,7 +31,7 @@
                             </tr>
                         </table>
                     </div>
-                    <div ng-if="current_player" class="col-md-6">
+                    <div ng-if="current_player" class="col-md-5 col-sm-2">
                         <img class="img-responsive" src="{{current_player.image}}" alt="">
                         <h4>Name</h4>
                         <p>{{current_player.name}}</p>
