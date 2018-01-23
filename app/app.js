@@ -11,5 +11,5 @@ angular.module('SportsApp', [
 	  		controller:'TeamController',
 	  		templateUrl: 'team/team.html'
 	  	})
-    .otherwise({redirectTo: 'team'});
+    .otherwise({redirectTo: '/'});
 }]);
