@@ -2,12 +2,12 @@
 
 var team = angular.module('SportsApp.team', ['ngRoute']);
 
-team.config(['$routeProvider', '$httpProvider', function($routeProvider, $httpProvider) {
-  $routeProvider.when('/team', {
-    templateUrl: 'team/team.html',
-    controller: 'TeamController'
-  });
-}])
+// team.config(['$routeProvider', '$httpProvider', function($routeProvider, $httpProvider) {
+//   $routeProvider.when('/team', {
+//     templateUrl: 'team/team.html',
+//     controller: 'TeamController'
+//   });
+// }])
 
 team.controller('TeamController', ['$scope', '$http', function($scope, $http) {
     // The team inserted by the user. 
