@@ -9,7 +9,7 @@ var team = angular.module('SportsApp.team', []);
 //   });
 // }])
 
-team.controller('TeamController', ['$scope', '$http', function($scope, $http) {
+team.controller('TeamController', function($scope, $http) {
     // The team inserted by the user. 
     $scope.team = null;
 
@@ -192,4 +192,4 @@ team.controller('TeamController', ['$scope', '$http', function($scope, $http) {
       return 0;
     }
 
-}]);
+});
