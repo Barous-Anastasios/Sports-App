@@ -1,14 +1,15 @@
 'use strict';
 
-angular.module('SportsApp.team', ['ngRoute'])
-.config(['$routeProvider', '$httpProvider', function($routeProvider, $httpProvider) {
+var team = angular.module('SportsApp.team', ['ngRoute']);
+
+team.config(['$routeProvider', '$httpProvider', function($routeProvider, $httpProvider) {
   $routeProvider.when('/team', {
     templateUrl: 'team/team.html',
     controller: 'TeamController'
   });
 }])
 
-.controller('TeamController', ['$scope', '$http', function($scope, $http) {
+team.controller('TeamController', ['$scope', '$http', function($scope, $http) {
     // The team inserted by the user. 
     $scope.team = null;
 
